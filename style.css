@@ -27,19 +27,25 @@ body {
 }
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0px);
     }
+
     50% {
         transform: translateY(-8px);
     }
 }
 
 @keyframes pulseGlow {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translate(-50%, -50%) scale(1);
         opacity: 0.75;
     }
+
     50% {
         transform: translate(-50%, -50%) scale(1.06);
         opacity: 0.9;
@@ -51,6 +57,7 @@ body {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -66,7 +73,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: rgba(15, 30, 54, 0.94);
+    background-color: rgba(15, 30, 54, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 0.9rem 0;
@@ -96,6 +103,24 @@ body {
     height: 45px;
     width: auto;
     object-fit: contain;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.burger-btn {
+    display: none;
+    color: var(--cream-bg);
+    cursor: pointer;
+    padding: 0.4rem;
+    border-radius: 8px;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+}
+
+.burger-btn:hover {
+    color: var(--accent-gold);
+    background-color: rgba(255, 255, 255, 0.08);
 }
 
 .nav-links {
@@ -131,6 +156,94 @@ body {
 
 .nav-links a:hover::after {
     width: 100%;
+}
+
+/* Responsif Tablet & Mobile */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1.2rem;
+    }
+
+    /* Tampilkan Ikon Burger di Layar HP */
+    .burger-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menu-toggle:checked+.burger-btn {
+        color: var(--accent-gold);
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Menu Dropdown Tersembunyi Secara Default */
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(15, 30, 54, 0.98);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.35s ease, opacity 0.3s ease;
+        box-shadow: 0 12px 24px rgba(15, 30, 54, 0.25);
+    }
+
+    /* Tampilkan Menu Saat Checkbox Dicentang */
+    .menu-toggle:checked~.nav-menu {
+        max-height: 320px;
+        opacity: 1;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 0.8rem 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    .nav-links a:hover {
+        background-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 2.5rem;
+        gap: 2rem;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .photo-wrapper {
+        max-width: 280px;
+        width: 80%;
+    }
+
+    .profile-photo {
+        max-width: 260px;
+    }
 }
 
 /* Hero Section */
@@ -190,7 +303,8 @@ body {
     flex-wrap: wrap;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
     font-size: 0.95rem;
@@ -267,8 +381,7 @@ body {
     height: auto;
     display: block;
     object-fit: contain;
-    filter: drop-shadow(0 16px 24px rgba(15, 30, 54, 0.25)) 
-            drop-shadow(0 0 12px rgba(255, 255, 255, 0.45));
+    filter: drop-shadow(0 16px 24px rgba(15, 30, 54, 0.25)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.45));
     -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     animation: float 4.5s infinite ease-in-out;
@@ -276,8 +389,7 @@ body {
 }
 
 .profile-photo:hover {
-    filter: drop-shadow(0 20px 28px rgba(15, 30, 54, 0.32)) 
-            drop-shadow(0 0 16px rgba(197, 168, 128, 0.6));
+    filter: drop-shadow(0 20px 28px rgba(15, 30, 54, 0.32)) drop-shadow(0 0 16px rgba(197, 168, 128, 0.6));
 }
 
 /* Section Umum */
@@ -614,7 +726,7 @@ footer strong {
     .profile-photo {
         max-width: 260px;
     }
-    
+
     .nav-links {
         gap: 1rem;
         font-size: 0.9rem;
