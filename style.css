@@ -158,25 +158,26 @@ body {
     width: 100%;
 }
 
-/* Responsif Tablet & Mobile */
+/* Responsif Tablet & Mobile (Letakkan di paling bawah style.css) */
 @media (max-width: 768px) {
     .nav-container {
         padding: 0 1.2rem;
     }
 
-    /* Tampilkan Ikon Burger di Layar HP */
+    /* Tampilkan ikon burger di pojok kanan */
     .burger-btn {
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-left: auto;
     }
 
-    .menu-toggle:checked+.burger-btn {
+    .menu-toggle:checked + .burger-btn {
         color: var(--accent-gold);
         background-color: rgba(255, 255, 255, 0.1);
     }
 
-    /* Menu Dropdown Tersembunyi Secara Default */
+    /* Sembunyikan dropdown menu secara default */
     .nav-menu {
         position: absolute;
         top: 100%;
@@ -192,8 +193,8 @@ body {
         box-shadow: 0 12px 24px rgba(15, 30, 54, 0.25);
     }
 
-    /* Tampilkan Menu Saat Checkbox Dicentang */
-    .menu-toggle:checked~.nav-menu {
+    /* Munculkan dropdown menu saat tombol burger diklik */
+    .menu-toggle:checked ~ .nav-menu {
         max-height: 320px;
         opacity: 1;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -203,7 +204,7 @@ body {
         flex-direction: column;
         align-items: center;
         gap: 0;
-        padding: 0.8rem 0;
+        padding: 0.6rem 0;
     }
 
     .nav-links li {
