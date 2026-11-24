@@ -68,7 +68,7 @@ body {
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Sticky Navbar */
+/* Navbar */
 .navbar {
     position: sticky;
     top: 0;
@@ -158,13 +158,11 @@ body {
     width: 100%;
 }
 
-/* Responsif Tablet & Mobile (Letakkan di paling bawah style.css) */
 @media (max-width: 768px) {
     .nav-container {
         padding: 0 1.2rem;
     }
 
-    /* Tampilkan ikon burger di pojok kanan */
     .burger-btn {
         display: flex;
         align-items: center;
@@ -177,7 +175,6 @@ body {
         background-color: rgba(255, 255, 255, 0.1);
     }
 
-    /* Sembunyikan dropdown menu secara default */
     .nav-menu {
         position: absolute;
         top: 100%;
@@ -193,7 +190,6 @@ body {
         box-shadow: 0 12px 24px rgba(15, 30, 54, 0.25);
     }
 
-    /* Munculkan dropdown menu saat tombol burger diklik */
     .menu-toggle:checked ~ .nav-menu {
         max-height: 320px;
         opacity: 1;
