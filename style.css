@@ -1,0 +1,622 @@
+:root {
+    --navy-dark: #0f1e36;
+    --navy-medium: #1d3557;
+    --navy-light: #2b4c7e;
+    --cream-bg: #f8f5f0;
+    --cream-card: #ffffff;
+    --cream-alt: #efeae1;
+    --text-main: #1a2536;
+    --text-muted: #526075;
+    --accent-gold: #c5a880;
+    --accent-gold-light: #e6d5bc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cream-bg);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.75;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.06);
+        opacity: 0.9;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Sticky Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(15, 30, 54, 0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.9rem 0;
+    box-shadow: 0 4px 20px rgba(15, 30, 54, 0.12);
+}
+
+.nav-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
+.logo {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--cream-bg);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--accent-gold);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-gold);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 3rem 2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    min-height: 78vh;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 550px;
+}
+
+.greeting-badge {
+    display: inline-block;
+    background-color: var(--cream-alt);
+    color: var(--navy-medium);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(29, 53, 87, 0.12);
+}
+
+.hero-content h1 {
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    font-weight: 800;
+    color: var(--navy-dark);
+    line-height: 1.15;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.5px;
+}
+
+.hero-content .role {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.hero-content .dot {
+    color: var(--accent-gold);
+    font-weight: bold;
+    margin: 0 0.3rem;
+}
+
+/* Button */
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--navy-dark);
+    color: var(--cream-bg);
+    box-shadow: 0 4px 14px rgba(15, 30, 54, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--navy-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(15, 30, 54, 0.28);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--navy-dark);
+    border: 1.5px solid var(--navy-dark);
+}
+
+.btn-secondary:hover {
+    background-color: var(--cream-alt);
+    transform: translateY(-2px);
+}
+
+/* Foto Profil PNG Tanpa Box + Highlight */
+.photo-wrapper {
+    position: relative;
+    flex: 1;
+    max-width: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.highlight-backdrop {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 82%;
+    aspect-ratio: 1 / 1;
+    background: radial-gradient(circle, rgba(29, 53, 87, 0.85) 0%, rgba(15, 30, 54, 0.45) 55%, rgba(248, 245, 240, 0) 75%);
+    border-radius: 50%;
+    filter: blur(22px);
+    z-index: 1;
+    animation: pulseGlow 5s infinite ease-in-out;
+}
+
+.highlight-accent {
+    position: absolute;
+    top: 20%;
+    right: 12%;
+    width: 140px;
+    height: 140px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+    filter: blur(35px);
+    opacity: 0.55;
+    z-index: 1;
+}
+
+.profile-photo {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 370px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 16px 24px rgba(15, 30, 54, 0.25)) 
+            drop-shadow(0 0 12px rgba(255, 255, 255, 0.45));
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    animation: float 4.5s infinite ease-in-out;
+    transition: transform 0.3s ease;
+}
+
+.profile-photo:hover {
+    filter: drop-shadow(0 20px 28px rgba(15, 30, 54, 0.32)) 
+            drop-shadow(0 0 16px rgba(197, 168, 128, 0.6));
+}
+
+/* Section Umum */
+.section {
+    background-color: var(--cream-alt);
+    padding: 5rem 2rem;
+}
+
+.bg-alt {
+    background-color: var(--cream-bg);
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+    margin-bottom: 1.2rem;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 45px;
+    height: 3.5px;
+    background-color: var(--accent-gold);
+    border-radius: 2px;
+    margin-top: 6px;
+}
+
+.section-desc {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+/* About Intro */
+.about-intro {
+    max-width: 800px;
+    margin-bottom: 3rem;
+}
+
+.about-intro p {
+    font-size: 1.02rem;
+    color: var(--text-main);
+}
+
+/* Tabel Perjalanan Pendidikan */
+.education-section h3 {
+    font-size: 1.4rem;
+    color: var(--navy-dark);
+    margin-bottom: 0.4rem;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(15, 30, 54, 0.06);
+    background-color: var(--cream-card);
+}
+
+.edu-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 600px;
+}
+
+.edu-table thead {
+    background-color: var(--navy-dark);
+    color: var(--cream-bg);
+}
+
+.edu-table th {
+    padding: 1rem 1.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.edu-table td {
+    padding: 1rem 1.4rem;
+    border-bottom: 1px solid rgba(15, 30, 54, 0.08);
+    vertical-align: middle;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.edu-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.edu-table tbody tr {
+    transition: background-color 0.25s ease;
+}
+
+.edu-table tbody tr:hover {
+    background-color: rgba(239, 234, 225, 0.55);
+}
+
+/* Wadah Logo Sekolah di Dalam Tabel */
+.school-logo-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: var(--cream-bg);
+    border: 1.5px dashed rgba(29, 53, 87, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.school-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.level-badge {
+    display: inline-block;
+    background-color: var(--cream-alt);
+    color: var(--navy-medium);
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+}
+
+.school-name {
+    font-weight: 700;
+    color: var(--navy-dark) !important;
+}
+
+/* Section Keahlian (HTML, CSS, JS) */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.8rem;
+}
+
+.skill-card {
+    background-color: var(--cream-card);
+    padding: 2rem;
+    border-radius: 14px;
+    border: 1px solid rgba(15, 30, 54, 0.08);
+    box-shadow: 0 6px 18px rgba(15, 30, 54, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-gold);
+    box-shadow: 0 14px 28px rgba(15, 30, 54, 0.09);
+}
+
+.skill-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 0.9rem;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+.html-badge {
+    background-color: rgba(227, 79, 38, 0.12);
+    color: #c93d18;
+}
+
+.css-badge {
+    background-color: rgba(21, 114, 182, 0.12);
+    color: #13619c;
+}
+
+.js-badge {
+    background-color: rgba(247, 223, 30, 0.25);
+    color: #8a7300;
+}
+
+.skill-card h3 {
+    color: var(--navy-dark);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.skill-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+/* Portofolio */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 1.8rem;
+}
+
+.card {
+    background-color: var(--cream-card);
+    padding: 2rem;
+    border-radius: 14px;
+    border-top: 4px solid var(--navy-dark);
+    box-shadow: 0 6px 18px rgba(15, 30, 54, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(15, 30, 54, 0.1);
+    border-top-color: var(--accent-gold);
+}
+
+.card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.card h3 {
+    color: var(--navy-dark);
+    margin: 0.6rem 0;
+    font-size: 1.25rem;
+}
+
+.card .tag {
+    display: inline-block;
+    font-size: 0.78rem;
+    background-color: var(--cream-alt);
+    color: var(--navy-medium);
+    padding: 0.25rem 0.7rem;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+/* Contact */
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--cream-card);
+    padding: 1.2rem 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-main);
+    border: 1px solid rgba(15, 30, 54, 0.08);
+    box-shadow: 0 4px 12px rgba(15, 30, 54, 0.03);
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-gold);
+    box-shadow: 0 8px 20px rgba(15, 30, 54, 0.08);
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    background-color: var(--cream-alt);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.contact-item small {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    display: block;
+}
+
+.contact-item p {
+    font-weight: 600;
+    color: var(--navy-dark);
+}
+
+/* Footer */
+footer {
+    background-color: var(--navy-dark);
+    color: var(--cream-bg);
+    text-align: center;
+    padding: 1.8rem;
+    font-size: 0.9rem;
+}
+
+footer strong {
+    color: var(--accent-gold);
+}
+
+/* Responsif Tablet & Mobile */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1.2rem;
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 2.5rem;
+        gap: 2rem;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .photo-wrapper {
+        max-width: 280px;
+        width: 80%;
+    }
+
+    .profile-photo {
+        max-width: 260px;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+}
